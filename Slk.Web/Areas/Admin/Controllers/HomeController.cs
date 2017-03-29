@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Slk.Web.Areas.Admin.Controllers
 {
+    [RequireHttps]
     [Authorize]
     public class HomeController : Controller
     {

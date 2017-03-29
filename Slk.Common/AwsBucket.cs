@@ -19,8 +19,8 @@ namespace Slk.Common
         //private static CloudBlobContainer container;
         private static string _hostName = "https://s3-us-west-2.amazonaws.com";
         private static string _bucketName = "bucket4slk";
-        private static string accessKey = "XXX";
-        private static string secretKey = "YYY";
+        private static string accessKey = "x";
+        private static string secretKey = "y";
 
         static AwsBucket()
         {

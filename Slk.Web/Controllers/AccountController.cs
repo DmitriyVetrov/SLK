@@ -16,6 +16,7 @@ using Slk.Web.Models;
 
 namespace Slk.Web.Controllers
 {
+    [RequireHttps]
     [Authorize]
     public class AccountController : Controller
     {

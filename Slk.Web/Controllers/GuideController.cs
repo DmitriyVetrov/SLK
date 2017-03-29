@@ -11,6 +11,7 @@ using Slk.Web.Hubs;
 
 namespace Slk.Web.Controllers
 {
+    [RequireHttps]
     public class GuideController : Controller
     {
         private readonly IGuideService _guideService = new GuideService();
