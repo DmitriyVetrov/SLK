@@ -1,8 +1,9 @@
 ﻿@model Slk.Web.Models.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
-
-<h4>Use another service to log in.</h4>
-<hr />
+<p>
+    <h4>Use another service to log in.</h4>
+    <hr />
+</p>
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
     if (loginProviders.Count() == 0) {

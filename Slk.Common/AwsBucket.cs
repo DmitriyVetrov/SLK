@@ -24,13 +24,6 @@ namespace Slk.Common
 
         static AwsBucket()
         {
-            //string accountName = "owlmedia";
-            //string accountKey = "bvBNu2bnML/DRXbiWDiJpF0bggusmgEwrC7/RhV6YyX3Mq+bhrH1yY5rsTVopV2cg+BzvnQAIhZzjgj/LIQpMA==";
-
-            //StorageCredentials creds = new StorageCredentials(accountName, accountKey);
-            //CloudStorageAccount storageAccount = new CloudStorageAccount(creds, useHttps: true);
-            //CloudBlobClient blobStorage = storageAccount.CreateCloudBlobClient();
-            //container = blobStorage.GetContainerReference("photos");
         }
 
         public static string StoreImage(byte[] imageBytes, string fileName)

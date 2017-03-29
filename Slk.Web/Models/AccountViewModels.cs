@@ -66,6 +66,10 @@ namespace Slk.Web.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -83,7 +87,7 @@ namespace Slk.Web.Models
 
         public static explicit operator User(RegisterViewModel model)
         {
-            return new User { Email = model.Email };
+            return new User { Email = model.Email, FirstName = model.UserName };
         }
     }
 

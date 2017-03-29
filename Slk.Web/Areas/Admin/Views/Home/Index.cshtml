@@ -14,6 +14,8 @@
 </div>
 <hr />
 
+<div id="no_items" class="well well-lg" style="display:none">Please to <a href="@Url.Action("Edit", "Home", new { area = "Admin" })">Add Article</a></div>
+
 @foreach (var a in Model)
 {
     <div class="media" id="q_@a.Id">
@@ -50,6 +52,7 @@
     </div>
 </div>
 
+@section scripts {
 <script>
     function deleteArticle(btn) {
         if (confirm('Are you sure you want to delete this?')) {
@@ -58,10 +61,20 @@
                 type: 'DELETE',
                 data: { id: btn.data('id') },
                 success: function (data) {
-                    $('#q_' + data.id).fadeOut();
+                    var id = '#q_' + data.id;
+                    $(id).fadeOut();
+                    $(id).remove();
+                    if($('.media').length == 0)
+                        $('#no_items').fadeIn();
                 }
             });
         }
         return false;
     }
+
+    $(function () {
+        if(@Model.Count()==0)
+            $('#no_items').fadeIn();
+    })
 </script>
+}

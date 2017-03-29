@@ -4,8 +4,6 @@
     ViewBag.Title = "Edit";
 }
 
-
-
 @using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { onSubmit = "return kontrola();", enctype = "multipart/form-data" }))
 {
     @*<div id="mask" style="background-image: url('@Model.BackgroundImageUrl'); background-position: center;"></div>
@@ -25,10 +23,9 @@
 
                 <ul class="nav nav-pills pull-right">
                     <li role="presentation">
-                        <a href="@Url.Action("Index")">Preview</a>
+                        <a href="~/topic/article-@Model.Id.ToString().PadLeft(8, '0')" target="_blank">Preview</a>
                     </li>
                 </ul>
-
             </div>
         </div>
 

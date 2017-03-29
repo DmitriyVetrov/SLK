@@ -221,6 +221,7 @@
     <Content Include="Content\custom-bootstrap.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\logo.png" />
     <Content Include="Content\themes\clean-blog.css" />
     <Content Include="Content\themes\clean-blog.min.css" />
     <Content Include="Content\summernote\summernote.css" />
@@ -258,6 +259,7 @@
     <None Include="Properties\PublishProfiles\smart.pubxml" />
     <Content Include="Scripts\clean-blog.js" />
     <Content Include="Scripts\clean-blog.min.js" />
+    <Content Include="Scripts\common\forecast.io.js" />
     <Content Include="Scripts\contact_me.js" />
     <Content Include="Scripts\fileinput\fileinput.js" />
     <Content Include="Scripts\fileinput\fileinput.min.js" />

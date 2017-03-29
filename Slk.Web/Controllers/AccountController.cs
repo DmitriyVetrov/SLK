@@ -451,7 +451,7 @@ namespace Slk.Web.Controllers
             var _signInHelper = new SignInHelper(AuthenticationManager);
             _signInHelper.SignOut();
 
-            return Redirect("/");
+            return Redirect("/auth");
         }
 
         /*

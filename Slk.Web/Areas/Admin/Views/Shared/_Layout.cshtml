@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - The Blog</title>
+    <title>@ViewBag.Title - Guide Book</title>
     @Styles.Render("~/css/bootstrap")
     @Styles.Render("~/css/summernote")
     @Styles.Render("~/css/fileinput")
@@ -21,7 +21,7 @@
                 
                 @*@Html.ActionLink("The Blog", "Index", "Home", new { area = "Admin" }, new { @class = "navbar-brand" })*@
                 <a href="@Url.Action("Index", "Home", new { area = "Admin" })" class="navbar-brand">
-                    <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> The Blog
+                    Guide Book
                 </a>
             </div>
             <div class="navbar-collapse collapse">

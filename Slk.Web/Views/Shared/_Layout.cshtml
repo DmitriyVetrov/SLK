@@ -8,14 +8,10 @@
     @Styles.Render("~/css/theme")
 
     <!-- Custom Fonts -->
-    @*@Styles.Render("~/css/font-awesome")
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>*@
-
-    <!-- Custom Fonts -->
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 
@@ -29,7 +25,10 @@
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="/">Guide Book</a>
+                <a class="navbar-brand" href="/">
+                    @*<img src="~/Content/logo.png" class="img-responsive2">*@
+                    Guide Book
+                </a>                
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -69,15 +68,15 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <ul class="list-inline text-center">
                         <li>
-                            <a href="#">
+                            <a href="https://www.google.com/search?q=slovakian+way" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                                    <i class="fa fa-google fa-stack-1x fa-inverse"></i>
                                 </span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="https://www.facebook.com/search/top/?init=quick&q=slovakian%20way" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
@@ -85,7 +84,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="https://www.youtube.com/results?search_query=slovakian+way" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
