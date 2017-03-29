@@ -1,0 +1,44 @@
+﻿@model Slk.Models.Article
+
+@{
+    ViewBag.Title = "Article";
+    var bg_image = string.IsNullOrEmpty(Model.BackgroundImageUrl) ? "https://zotsell.com/themes/newsinglepage/img/patterns/pattern.png"
+        : Model.BackgroundImageUrl;
+}
+
+<header class="intro-header" style="background-image: url('@bg_image')">
+    <div id="mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>@Model.Title</h1>
+                    <h2 class="subheading">@Model.SubTitle</h2>
+                    <span class="meta">Posted by <a href="#">@Model.UserName</a> on @Model.CreationDate.ToString("MMMM dd, yyyy")</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+
+                <div id="body_field"> <!-- Content Here --> </div>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            var encodeHtml = "@Model.Body";
+            var html = decodeURIComponent(encodeHtml);
+            $('#body_field').html(html);
+        })
+    </script>
+}

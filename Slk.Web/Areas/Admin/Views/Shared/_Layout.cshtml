@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - The Blog</title>
+    @Styles.Render("~/css/bootstrap")
+    @Styles.Render("~/css/summernote")
+    @Styles.Render("~/css/fileinput")
+    @Styles.Render("~/css/custom-bootstrap")
+</head>
+<body>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                @*@Html.ActionLink("The Blog", "Index", "Home", new { area = "Admin" }, new { @class = "navbar-brand" })*@
+                <a href="@Url.Action("Index", "Home", new { area = "Admin" })" class="navbar-brand">
+                    <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> The Blog
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="~/" class="navbar-brand">
+                            <span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Home
+                        </a>
+                    </li>
+
+                        @*<li>
+                    @Html.ActionLink("The Blog", "Index", "Home", new { area = "Admin" }, new { @class = "navbar-brand" })
+                </li>
+                <li>
+                    @Html.ActionLink("Контакты", "Index", "Home", new { area = "Admin" }, new { @class = "navbar-brand" })
+                </li>
+                <li>
+                    @Html.ActionLink("О Нас", "Index", "Home", new { area = "Admin" }, new { @class = "navbar-brand" })
+                </li>
+                <li>
+                    @Html.ActionLink("Ссылки", "Index", "Home", new { area = "Admin" }, new { @class = "navbar-brand" })
+                </li>*@
+
+                        @Html.Partial("_LoginPartial")
+                    </ul>
+</div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    
+    <footer class="footer">
+        <div class="container">
+            @*<p class="text-muted pull-left">Place sticky footer content here. <b id="header"></b></p>*@
+            <p class="copyright text-muted">Copyright &copy; The Blog @DateTime.Now.Year</p>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundle/jquery")
+    @Scripts.Render("~/bundle/bootstrap")        
+    @Scripts.Render("~/bundle/summernote")
+    @Scripts.Render("~/bundle/fileinput")
+    
+    @RenderSection("scripts", required: false)
+
+    </body>
+</html>

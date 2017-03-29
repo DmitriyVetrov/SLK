@@ -1,0 +1,165 @@
+﻿@model Slk.Models.Article
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { onSubmit = "return kontrola();", enctype = "multipart/form-data" }))
+{
+    @*<div id="mask" style="background-image: url('@Model.BackgroundImageUrl'); background-position: center;"></div>
+    <div id="mask" style="background-color: rgba(255,255,255,.6)"></div>*@
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+
+        <div class="form-group">            
+            <div class="col-md-10 col-md-offset-2">
+                <ul class="nav nav-pills pull-left">
+                    <li role="presentation" class="active"><input type="submit" value="Save Article" class="btn btn-success" /></li>
+                    @*<li role="presentation"><input type="submit" value="Save Article" class="btn btn-success" /></li>*@
+                </ul>
+
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation">
+                        <a href="@Url.Action("Index")">Preview</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+
+
+            @*<div class="form-group">
+                <div class="col-md-10 col-md-push-2">
+                    <div class="btn-group" role="group" aria-label="Default button group">
+                        <a class="btn btn-default" href="@Url.Action("Index")">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+                        </a>
+                        <input type="submit" value="Save Article" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>*@
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SubTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SubTitle, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SubTitle, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.HiddenFor(model => model.BackgroundImageUrl)
+
+            @*<div class="form-group">
+                <label for="UploadImage" class="col-md-2 control-label">Background Image</label>
+                <div class="col-md-10">
+                    <div class="btn-group" role="group" aria-label="Default button group">
+                        <input type="file" id="UploadImage" name="UploadImage">
+                        <input type="button" value="Save Article" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>*@
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div id="summernote"></div>
+                </div>
+            </div>
+
+            @Html.HiddenFor(model => model.Body)
+            @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Select File</label>
+                <div class="col-md-10">
+                    <input id="UploadImage" name="UploadImage" type="file" class="file-loading">
+                </div>
+            </div>
+
+        </div>
+}
+
+
+
+@section scripts {
+    <script type="text/javascript" language="JavaScript">
+        function kontrola() {
+            var html = $('#summernote').summernote('code');
+            var encodeHtml = encodeURIComponent(html);
+            $('#Body').val(encodeHtml);
+        }
+
+        function initSummernote() {
+            $('#summernote').summernote({
+                focus: true,
+                tabsize: 2,
+                minHeight: 200
+
+                
+            });
+
+            var encodeHtml = $('#Body').val();
+            var html = decodeURIComponent(encodeHtml);
+            $('#summernote').summernote('code', html);
+        }
+
+        $(function () {
+            initSummernote();
+
+            $("#UploadImage").fileinput({
+                layoutTemplates: { actionUpload: '' },
+                showUpload: false,
+
+
+                uploadUrl: "../../../api/upload/@Model.Id",
+                uploadAsync: true,
+                //minFileCount: 1,
+                //maxFileCount: 1,
+                overwriteInitial: true,
+                initialPreview: [
+                    // IMAGE DATA
+                    "@Model.BackgroundImageUrl"
+                ],
+                initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
+                initialPreviewFileType: 'image', // image is the default and can be overridden in config below
+                initialPreviewConfig: [
+                    { caption: "Desert.jpg", width: "120px", url: "../../../api/remove/@Model.Id", key: "@Model.BackgroundImageUrl" } //size: 827000,
+                ],
+                purifyHtml: true, // this by default purifies HTML data for preview
+                uploadExtraData: {
+                    //articleId: "@Model.Id",
+                    //img_keywords: "happy, places",
+                }
+            }).on('filepreupload', function (event, outData, previewName, index) {
+                outData.form.delete('file_id');
+            }).on('fileuploaded', function (e, params) {
+                //console.log('File uploaded params', params);
+                $('#BackgroundImageUrl').val(params.response);
+            });
+            //    .on('filesorted', function (e, params) {
+            //    console.log('File sorted params', params);
+            //}).on('fileuploaded', function (e, params) {
+            //    console.log('File uploaded params', params);
+            //});
+        })
+
+    </script>
+}

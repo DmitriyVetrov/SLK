@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Slk.Models.Article>
+
+@{
+    ViewBag.Title = "Home"; var index = 0;
+}
+
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('http://www.bratislava-guide.sk/fileadmin/templates/martin-sloboda/images/bratislava-danube-explorer-tours.jpg')">
+    <div id="mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Словацкий Вестник</h1>
+                    <hr class="small">
+                    <span class="subheading">Вопросы, ответы, путешствия, обзоры и новости</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+            @foreach (var a in Model)
+            {
+                index++;
+                <div class="post-preview">
+                    <a href="topic/article-@a.Id.ToString().PadLeft(8, '0')">
+                        <h2 class="post-title">
+                            @a.Title
+                        </h2>
+                        @*<div class="preview-image" style="background-image:url('@a.BackgroundImage')"></div>*@
+                        <h3 class="post-subtitle">
+                            @a.SubTitle
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by <a href="#">@a.UserName</a> on @a.CreationDate.ToString("MMMM dd, yyyy")</p>
+                </div>
+                if (index != Model.Count()) { <hr> }
+            }
+
+            <!-- Pager -->
+            <ul class="pager hidden">
+                <li class="previous">
+                    <a href="#">Older Posts &rarr;</a>
+                </li>
+                <li class="next">
+                    <a href="#">Older Posts &rarr;</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-2 col-sm-offset-1 blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+                <h4>About</h4>
+                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+            </div>
+            <div class="sidebar-module">
+                <h4>Что вас интересует?</h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">March 2014</a></li>
+                    <li><a href="#">February 2014</a></li>
+                    <li><a href="#">January 2014</a></li>
+                    <li><a href="#">December 2013</a></li>
+                    <li><a href="#">November 2013</a></li>
+                    <li><a href="#">October 2013</a></li>
+                    <li><a href="#">September 2013</a></li>
+                    <li><a href="#">August 2013</a></li>
+                    <li><a href="#">July 2013</a></li>
+                    <li><a href="#">June 2013</a></li>
+                    <li><a href="#">May 2013</a></li>
+                    <li><a href="#">April 2013</a></li>
+                </ol>
+            </div>
+        </div><!-- /.blog-sidebar -->
+    </div>
+</div>
+
